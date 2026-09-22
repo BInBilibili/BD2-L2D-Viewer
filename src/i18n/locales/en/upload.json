@@ -1,0 +1,27 @@
+{
+  "spine": {
+    "title": "Upload Spine Files",
+    "descriptionStart": "Select your ",
+    "descriptionSeparator": ", ",
+    "descriptionOr": " or ",
+    "descriptionAnd": " and related ",
+    "descriptionEnd": " files. Only Spine 4.1 files are supported.",
+    "namePlaceholder": "Character name",
+    "dropHint": "Drag files here or ",
+    "chooseFiles": "choose files",
+    "submit": "Upload",
+    "errorNoName": "Enter a name.",
+    "errorMissingFiles": "Atlas and/or skeleton files are missing.",
+    "errorMissingImages": "Missing images: {names}",
+    "errorUnexpected": "Unexpected error: {message}",
+    "errorReadAtlas": "Failed to read atlas.",
+    "success": "Upload successfull."
+  },
+  "background": {
+    "title": "Custom Background",
+    "description": "You can upload your own background image to place behind the character. The image will be draggable and resizable just like the built-in editor. Recommended formats: PNG or JPG.",
+    "selectImage": "Click to select an image",
+    "maxSizeHint": "Maximum file size depends on your browser",
+    "reset": "Reset background"
+  }
+}

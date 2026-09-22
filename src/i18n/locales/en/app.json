@@ -1,0 +1,21 @@
+{
+  "ariaInspect": "Inspect animation",
+  "ariaZoomOut": "Zoom out",
+  "ariaZoomIn": "Zoom in",
+  "hintUse": "Use",
+  "hintHide": "to hide the selected layer,",
+  "hintRevert": "to revert the last change, and",
+  "hintReset": "to reset the state.",
+  "stepLabel": "Step {current} of {total}",
+  "tutorialLoadingTitle": "Preparing an interactive character",
+  "tutorialLoadingMessage": "Finding a playable character with the idle and motion animations...",
+  "tutorialCharacterTitle": "Characters are interactive",
+  "tutorialCharacterMessage": "Click directly on the character to play their motion animation and voice line.",
+  "tutorialVoiceSettingsTitle": "Voice settings",
+  "tutorialVoiceSettingsMessage": "Open Settings with the gear button to choose the voice language.",
+  "tutorialMobileMenuMessage": "Open the navigation menu to find the voice settings.",
+  "tutorialOpenSettingsTitle": "Open Settings",
+  "tutorialOpenSettingsMessage": "Tap Settings to choose between Japanese and Korean voices.",
+  "tutorialLanguageTitle": "Choose a voice language",
+  "tutorialLanguageMessage": "Select JP or KR. Your preference is saved in this browser and used for future voice lines."
+}

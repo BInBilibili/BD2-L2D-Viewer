@@ -1,0 +1,21 @@
+{
+  "ariaInspect": "查看动画",
+  "ariaZoomOut": "缩小",
+  "ariaZoomIn": "放大",
+  "hintUse": "按",
+  "hintHide": "隐藏选中图层，按",
+  "hintRevert": "撤销上一步，按",
+  "hintReset": "重置状态。",
+  "stepLabel": "第 {current} / {total} 步",
+  "tutorialLoadingTitle": "正在准备可互动角色",
+  "tutorialLoadingMessage": "正在寻找带有待机与互动动画的可玩角色...",
+  "tutorialCharacterTitle": "角色可以互动",
+  "tutorialCharacterMessage": "直接点击角色，即可播放其互动动画与语音。",
+  "tutorialVoiceSettingsTitle": "语音设置",
+  "tutorialVoiceSettingsMessage": "点击齿轮按钮打开设置，即可选择语音语言。",
+  "tutorialMobileMenuMessage": "打开导航菜单即可找到语音设置。",
+  "tutorialOpenSettingsTitle": "打开设置",
+  "tutorialOpenSettingsMessage": "点击「设置」，在日语与韩语语音之间切换。",
+  "tutorialLanguageTitle": "选择语音语言",
+  "tutorialLanguageMessage": "选择 JP 或 KR。你的选择会保存在当前浏览器中，并用于之后的语音播放。"
+}

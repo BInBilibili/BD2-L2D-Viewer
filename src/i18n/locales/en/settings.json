@@ -1,0 +1,12 @@
+{
+  "title": "Settings",
+  "closeAria": "Close settings",
+  "audioLanguageLegend": "Audio language",
+  "audioLanguageHint": "Choose which voice language plays with character animations.",
+  "japanese": "Japanese",
+  "korean": "Korean",
+  "uiLanguageLegend": "Interface language",
+  "uiLanguageHint": "Choose the language used across the site.",
+  "chineseName": "Simplified Chinese",
+  "englishName": "English"
+}

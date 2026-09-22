@@ -13,5 +13,10 @@
 </template>
 
 <script setup lang="ts">
-import changelog from '@/utils/changelog';
+import { computed } from 'vue'
+import changelogEn from '@/utils/changelog'
+import changelogZh from '@/utils/changelog.zh'
+import { locale } from '@/i18n'
+
+const changelog = computed(() => (locale.value === 'zh' ? changelogZh : changelogEn))
 </script>

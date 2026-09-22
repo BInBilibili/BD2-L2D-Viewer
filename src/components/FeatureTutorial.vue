@@ -26,7 +26,7 @@
             class="cursor-pointer rounded px-3 py-2 text-sm text-gray-300 transition-colors hover:bg-gray-800 hover:text-white"
             @click="emit('skip')"
           >
-            Skip tutorial
+            {{ t('tutorial.skip') }}
           </button>
           <button
             v-if="canComplete"
@@ -34,7 +34,7 @@
             class="cursor-pointer rounded bg-indigo-600 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
             @click="emit('complete')"
           >
-            Got it
+            {{ t('tutorial.gotIt') }}
           </button>
         </div>
       </section>
@@ -44,6 +44,8 @@
 
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch, type CSSProperties } from 'vue'
+
+import { t } from '@/i18n'
 
 const props = defineProps<{
   target?: string | null

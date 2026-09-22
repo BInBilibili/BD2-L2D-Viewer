@@ -61,7 +61,7 @@
           <button
             v-show="!overlayActive"
             :aria-pressed="inspectMode"
-            aria-label="Inspect animation"
+            :aria-label="t('app.ariaInspect')"
             class="pb-2"
             @click="onInspectModeChange(!inspectMode)"
           >
@@ -75,14 +75,14 @@
           </button>
           <button
             v-show="!overlayActive"
-            aria-label="Zoom out"
+            :aria-label="t('app.ariaZoomOut')"
             @click="onZoomOut"
           >
             <MinusIcon />
           </button>
           <button
             v-show="!overlayActive"
-            aria-label="Zoom in"
+            :aria-label="t('app.ariaZoomIn')"
             @click="onZoomIn"
           >
             <PlusIcon />
@@ -102,9 +102,12 @@
           class="absolute top-3 left-1/2 -translate-x-1/2 z-50 hidden lg:block pointer-events-none"
         >
           <div class="rounded-xl border border-gray-700 bg-gray-900/90 px-4 py-3 text-sm text-white shadow-lg shadow-black/40 backdrop-blur-sm">
-            Use <span class="font-semibold text-indigo-300">H</span> to hide the selected layer,
-            <span class="font-semibold text-indigo-300">U</span> to revert the last change, and
-            <span class="font-semibold text-indigo-300">Esc</span> to reset the state.
+            {{ t('app.hintUse') }} <span class="font-semibold text-indigo-300">H</span>
+            {{ t('app.hintHide') }}
+            <span class="font-semibold text-indigo-300">U</span>
+            {{ t('app.hintRevert') }}
+            <span class="font-semibold text-indigo-300">Esc</span>
+            {{ t('app.hintReset') }}
           </div>
         </div>
       </main>
@@ -166,6 +169,7 @@ import FeatureTutorial from '@/components/FeatureTutorial.vue'
 import { ref, watchEffect, computed, watch, onBeforeUnmount, onMounted } from 'vue'
 import { useCharacterStore } from '@/stores/characterStore'
 import { useSettingsStore } from '@/stores/settingsStore'
+import { t } from '@/i18n'
 import { buildUrl } from './utils/urlSync'
 
 import CameraResetIcon from '@/components/icons/CameraResetIcon.vue';
@@ -220,43 +224,43 @@ const tutorialContent = computed<TutorialContent | null>(() => {
     case 'loading':
       return {
         target: null,
-        title: 'Preparing an interactive character',
-        message: 'Finding a playable character with the idle and motion animations...',
+        title: t('app.tutorialLoadingTitle'),
+        message: t('app.tutorialLoadingMessage'),
       }
     case 'character':
       return {
         target: '[data-tutorial="character-viewer"]',
-        title: 'Characters are interactive',
-        message: 'Click directly on the character to play their motion animation and voice line.',
-        stepLabel: 'Step 1 of 3',
+        title: t('app.tutorialCharacterTitle'),
+        message: t('app.tutorialCharacterMessage'),
+        stepLabel: t('app.stepLabel', { current: 1, total: 3 }),
       }
     case 'settings':
       return {
         target: '[data-tutorial="settings-button"]',
-        title: 'Voice settings',
-        message: 'Open Settings with the gear button to choose the voice language.',
-        stepLabel: 'Step 2 of 3',
+        title: t('app.tutorialVoiceSettingsTitle'),
+        message: t('app.tutorialVoiceSettingsMessage'),
+        stepLabel: t('app.stepLabel', { current: 2, total: 3 }),
       }
     case 'mobile-menu':
       return {
         target: '[data-tutorial="mobile-menu-button"]',
-        title: 'Voice settings',
-        message: 'Open the navigation menu to find the voice settings.',
-        stepLabel: 'Step 2 of 3',
+        title: t('app.tutorialVoiceSettingsTitle'),
+        message: t('app.tutorialMobileMenuMessage'),
+        stepLabel: t('app.stepLabel', { current: 2, total: 3 }),
       }
     case 'mobile-settings':
       return {
         target: '[data-tutorial="mobile-settings-button"]',
-        title: 'Open Settings',
-        message: 'Tap Settings to choose between Japanese and Korean voices.',
-        stepLabel: 'Step 2 of 3',
+        title: t('app.tutorialOpenSettingsTitle'),
+        message: t('app.tutorialOpenSettingsMessage'),
+        stepLabel: t('app.stepLabel', { current: 2, total: 3 }),
       }
     case 'language':
       return {
         target: '[data-tutorial="audio-language"]',
-        title: 'Choose a voice language',
-        message: 'Select JP or KR. Your preference is saved in this browser and used for future voice lines.',
-        stepLabel: 'Step 3 of 3',
+        title: t('app.tutorialLanguageTitle'),
+        message: t('app.tutorialLanguageMessage'),
+        stepLabel: t('app.stepLabel', { current: 3, total: 3 }),
         canComplete: true,
       }
     default:

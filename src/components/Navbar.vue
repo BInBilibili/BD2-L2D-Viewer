@@ -2,16 +2,16 @@
 <template>
   <div>
     <nav class="flex items-center justify-between bg-black text-white p-4">
-      <div class="text-xl md:text-3xl font-bold">Brown Dust 2 L2D Viewer</div>
+      <div class="text-xl md:text-3xl font-bold">{{ t('navbar.title') }}</div>
       <div class="hidden md:flex items-center gap-4">
-        <button class="cursor-pointer" @click="showUploadModal = true" title="Upload custom Spine model">
+        <button class="cursor-pointer" @click="showUploadModal = true" :title="t('navbar.uploadSpine')">
           <PlusIcon class="w-5 h-5 md:w-7 md:h-7" />
         </button>
         <button
           class="cursor-pointer"
           @click="openBackgroundModal(false)"
-          aria-label="Upload background"
-          title="Upload background image"
+          :aria-label="t('navbar.uploadBackground')"
+          :title="t('navbar.uploadBackgroundImage')"
         >
           <BgUploadIcon class="w-5 h-5 md:w-7 md:h-7" />
         </button>
@@ -19,8 +19,8 @@
           v-if="hasCustomBackground"
           class="cursor-pointer opacity-70 hover:opacity-100 transition"
           @click="resetBackground"
-          aria-label="Reset background"
-          title="Reset background image"
+          :aria-label="t('navbar.resetBackground')"
+          :title="t('navbar.resetBackgroundImage')"
         >
           <BgResetIcon class="w-5 h-5 md:w-7 md:h-7" />
         </button>
@@ -29,7 +29,7 @@
           target="_blank"
           rel="noopener"
           class="relative"
-          title="Support on Ko-fi"
+          :title="t('navbar.supportKofi')"
         >
           <KoFiIcon class="w-5 h-5 md:w-7 md:h-7" />
           <div
@@ -39,7 +39,7 @@
               kofiTooltipHidden ? 'opacity-0' : 'opacity-100'
             ]"
           >
-            If you like the work consider supporting!
+            {{ t('navbar.kofiTooltip') }}
             <span class="absolute left-1/2 -top-2 -translate-x-1/2 border-4 border-transparent border-b-white"></span>
           </div>
         </a>
@@ -47,7 +47,7 @@
           href="https://www.patreon.com/cw/jelosus1"
           target="_blank"
           rel="noopener"
-          title="Support on Patreon"
+          :title="t('navbar.supportPatreon')"
         >
           <PatreonIcon class="w-5 h-5 md:w-7 md:h-7" />
         </a>
@@ -55,16 +55,16 @@
           type="button"
           data-tutorial="settings-button"
           class="cursor-pointer"
-          title="Settings"
-          aria-label="Open settings"
+          :title="t('navbar.settings')"
+          :aria-label="t('navbar.openSettings')"
           @click="openSettings(false)"
         >
           <SettingsIcon class="w-5 h-5 md:w-7 md:h-7" />
         </button>
-        <button class="cursor-pointer" @click="showChangelog = true" title="Changelog">
+        <button class="cursor-pointer" @click="showChangelog = true" :title="t('navbar.changelog')">
           <ChangelogIcon class="w-5 h-5 md:w-7 md:h-7" />
         </button>
-        <a href="https://github.com/Jelosus2/BD2-L2D-Viewer" target="_blank" title="Open GitHub repository">
+        <a href="https://github.com/Jelosus2/BD2-L2D-Viewer" target="_blank" :title="t('navbar.openGithub')">
           <GithubIcon class="w-5 h-5 md:w-7 md:h-7" />
         </a>
       </div>
@@ -72,7 +72,7 @@
         data-tutorial="mobile-menu-button"
         class="md:hidden cursor-pointer"
         @click="openMobileMenu()"
-        aria-label="Menu"
+        :aria-label="t('navbar.menu')"
       >
         <MenuIcon class="w-5 h-5" />
       </button>
@@ -87,7 +87,7 @@
       <button
         class="absolute top-2 right-4 text-xl"
         @click="closeMobileMenu"
-        aria-label="Close menu"
+        :aria-label="t('navbar.closeMenu')"
       >
         ✕
       </button>
@@ -99,14 +99,14 @@
           @click="() => { showUploadModal = true; closeMobileMenu(); }"
         >
           <PlusIcon class="w-5 h-5" />
-          <span>Upload</span>
+          <span>{{ t('navbar.mobileUpload') }}</span>
         </button>
         <button
           class="flex items-center gap-2"
           @click="openBackgroundModal(true)"
         >
           <BgUploadIcon class="w-5 h-5" />
-          <span>Upload Background</span>
+          <span>{{ t('navbar.mobileUploadBackground') }}</span>
         </button>
         <button
           v-if="hasCustomBackground"
@@ -114,7 +114,7 @@
           @click="() => { resetBackground(); closeMobileMenu(); }"
         >
           <BgResetIcon class="w-5 h-5 opacity-60" />
-          <span>Reset Background</span>
+          <span>{{ t('navbar.mobileResetBackground') }}</span>
         </button>
         <button
           data-tutorial="mobile-settings-button"
@@ -122,14 +122,14 @@
           @click="openSettings(true)"
         >
           <SettingsIcon class="w-5 h-5" />
-          <span>Settings</span>
+          <span>{{ t('navbar.settings') }}</span>
         </button>
         <button
           class="flex items-center gap-2"
           @click="() => { showChangelog = true; closeMobileMenu(); }"
         >
           <ChangelogIcon class="w-5 h-5" />
-          <span>Changelog</span>
+          <span>{{ t('navbar.changelog') }}</span>
         </button>
         <a
           href="https://github.com/Jelosus2/BD2-L2D-Viewer"
@@ -139,7 +139,7 @@
           @click="closeMobileMenu"
         >
           <GithubIcon class="w-5 h-5" />
-          <span>GitHub</span>
+          <span>{{ t('navbar.github') }}</span>
         </a>
         <a
           href="https://ko-fi.com/jelosus1"
@@ -149,14 +149,14 @@
           @click="closeMobileMenu"
         >
           <KoFiIcon class="w-5 h-5" />
-          <span>Ko-fi</span>
+          <span>{{ t('navbar.kofi') }}</span>
           <span
             v-if="showMobileKofiTip"
             :class="[
               'ml-2 text-xs bg-red-600 text-white rounded px-2 py-0.5 transition-opacity duration-500',
               mobileKofiTipHidden ? 'opacity-0' : 'opacity-100'
             ]"
-            >Support!</span
+            >{{ t('navbar.mobileSupport') }}</span
           >
         </a>
         <a
@@ -167,7 +167,7 @@
           @click="closeMobileMenu"
         >
           <PatreonIcon class="w-5 h-5" />
-          <span>Patreon</span>
+          <span>{{ t('navbar.patreon') }}</span>
         </a>
       </div>
     </div>
@@ -191,6 +191,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed, watch } from 'vue'
+
+import { t } from '@/i18n'
 import ChangelogModal from '@/components/ChangelogModal.vue'
 import SettingsModal from '@/components/SettingsModal.vue'
 import UploadSpineModal from '@/components/UploadSpineModal.vue'

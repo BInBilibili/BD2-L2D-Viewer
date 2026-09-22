@@ -22,7 +22,7 @@
       <div class="flex flex-row gap-2">
         <button
           type="button"
-          aria-label="Inspect animation"
+          :aria-label="t('viewer.inspectAnimation')"
           :aria-pressed="inspectMode"
           @click="emit('update:inspectMode', !inspectMode)"
           class="w-8 h-8 p-1.5 rounded-md hidden lg:flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
@@ -37,14 +37,14 @@
           <LayerSelectIcon :active="store.layerSelectionEnabled" />
         </button>
         <button
-          aria-label="Zoom out"
+          :aria-label="t('viewer.zoomOut')"
           @click="zoomOut"
           class="w-8 h-8 p-1.5 rounded-md hidden lg:flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
         >
           <MinusIcon />
         </button>
         <button
-          aria-label="Zoom in"
+          :aria-label="t('viewer.zoomIn')"
           @click="zoomIn"
           class="w-8 h-8 p-1.5 rounded-md hidden lg:flex items-center justify-center bg-gray-800/70 hover:bg-gray-700/70 text-white transition-colors"
         >
@@ -64,7 +64,7 @@
           <img
             ref="backgroundImageEl"
             :src="backgroundImage.src"
-            alt="Background"
+            :alt="t('viewer.background')"
             draggable="false"
             class="w-full h-full object-cover select-none pointer-events-none"
           />
@@ -93,7 +93,7 @@
       v-if="store.selectedLayerName"
       class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-gray-900/80 text-white px-4 py-3 rounded-full z-50 pointer-events-none shadow-lg shadow-black/50 text-sm border border-gray-700 backdrop-blur-sm transition-opacity"
     >
-      Selected Layer: <span class="font-bold text-indigo-400">{{ store.selectedLayerName }}</span>
+      {{ t('viewer.selectedLayer.label') }} <span class="font-bold text-indigo-400">{{ t('viewer.selectedLayer.value', { name: store.selectedLayerName }) }}</span>
     </div>
     <input
       type="range"
@@ -112,6 +112,7 @@
 import { ref, reactive, watch, onMounted, onBeforeUnmount, computed, type CSSProperties } from 'vue'
 import { useCharacterStore } from '@/stores/characterStore'
 import { useSettingsStore } from '@/stores/settingsStore'
+import { t } from '@/i18n'
 import {
   SpinePlayer,
   Vector2,

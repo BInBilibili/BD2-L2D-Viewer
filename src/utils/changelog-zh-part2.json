@@ -1,0 +1,155 @@
+[
+  {
+    "date": "29/01/2026",
+    "changes": [
+      "新增 Blade: Onsen Swordfighter 终极技能动画。",
+      "新增 Ventana: Onsen Practitioner 宿命之客动画。",
+      "修复 Sylvia: The Sword Queen 的站立动画。",
+      "修复 Nebris: New Hire 宿命之客中 mixed3_X_4 动画脸部无法正常渲染的问题（这一改动可能也顺带修复了其他一些宿命之客）。",
+      "一如既往，如果你喜欢我的作品并希望支持我继续添加更多功能、改进网站，可以点击导航栏中的咖啡图标进行捐助。"
+    ]
+  },
+  {
+    "date": "16/01/2026",
+    "changes": [
+      "更新 Blade: Onsen Swordfighter 站立模型。",
+      "新增 Liberta: Hedonist、Granadair: Shrine Maiden of Purification、Granadair: Queen of Gluttis 和 Blade: Onsen Swordfighter 角色头像。",
+      "新增 Liberta: Hedonist、Granadair: Shrine Maiden of Purification 和 Granadair: Queen of Gluttis 站立动画。",
+      "新增 Liberta: Hedonist、Granadair: Shrine Maiden of Purification 和 Granadair: Queen of Gluttis 终极技能动画。",
+      "新增 Liberta: Hedonist 宿命之客动画。",
+      "修复一些本地化问题：Anatasia -> Anastasia、Lathel: Medicinal Herb Tracker -> Lathel: Herb Tracker",
+      "一如既往，如果你喜欢我的作品并希望支持我继续添加更多功能、改进网站，可以点击导航栏中的咖啡图标进行捐助。"
+    ]
+  },
+  {
+    "date": "30/12/2025",
+    "changes": [
+      "新增 Tyr: Innocent Bunny 终极技能动画。",
+      "新增 Tyr: Innocent Bunny 宿命之客动画。",
+      "修复宿命之客动画显示错误槽位的问题。",
+      "一如既往，如果你喜欢我的作品并希望支持我继续添加更多功能、改进网站，可以点击导航栏中的咖啡图标进行捐助。"
+    ]
+  },
+  {
+    "date": "17/12/2025",
+    "changes": [
+      "新增 Darian: Bittersweet Bunny、Tyr: Innocent Bunny、Eleaneer: Shadow Bunny、Zenith: Stranger Bunny 和 Wilhelmina: Frozen Queen 角色头像。",
+      "新增 Darian: Bittersweet Bunny、Tyr: Innocent Bunny、Eleaneer: Shadow Bunny、Zenith: Stranger Bunny 和 Wilhelmina: Frozen Queen 站立动画。",
+      "新增 Darian: Bittersweet Bunny、Eleaneer: Shadow Bunny、Zenith: Stranger Bunny、Wilhelmina: Frozen Queen、Celia: The Curse、Justia: Knight of Blood 和 Rafina: Steel Engine 终极技能动画。",
+      "新增 Eclipse: Nightmare Bunny 和 Zenith: Stranger Bunny 宿命之客动画。",
+      "新增角标，显示每个角色可用的动画类别。",
+      "一如既往，如果你喜欢我的作品并希望支持我继续添加更多功能、改进网站，可以点击导航栏中的咖啡图标进行捐助。"
+    ]
+  },
+  {
+    "date": "20/11/2025",
+    "changes": [
+      "新增 Olivier: Faithful Wings 角色头像。",
+      "新增 Olivier: Faithful Wings 站立动画和终极技能动画。",
+      "将 Olivier: White Witch ➔ Olivier: Faithful Wings 重命名。",
+      "修复动画导出时开头几帧反向播放的问题。",
+      "一如既往，如果你喜欢我的作品并希望支持我继续添加更多功能、改进网站，可以点击导航栏中的咖啡图标进行捐助。"
+    ]
+  },
+  {
+    "date": "23/10/2025",
+    "changes": [
+      "新增期待已久的功能：可以上传自定义背景图片并对其进行编辑！",
+      "新增 Granhildr: Boo Ghost 和 Sonya: Little Pumpkin Girl 角色头像。",
+      "新增 Granhildr: Boo Ghost 和 Sonya: Little Pumpkin Girl 站立动画和终极技能动画。",
+      "新增 Angelica: Neon Savior 宿命之客动画。",
+      "新增智能皮肤选择：当默认皮肤为空时会自动选择有内容的皮肤（Angelica: Neon Savior 的宿命之客皮肤会出现这种情况）。",
+      "一如既往，如果你喜欢我的作品并希望支持我继续添加更多功能、改进网站，可以点击导航栏中的咖啡图标进行捐助。"
+    ]
+  },
+  {
+    "date": "02/10/2025",
+    "changes": [
+      "新增 Darian: Prophetic Dream 角色头像。",
+      "新增 Darian: Prophetic Dream 站立动画和终极技能动画。"
+    ]
+  },
+  {
+    "date": "25/09/2025",
+    "changes": [
+      "新增 Tyr: Starlight Guardian 角色头像。",
+      "新增 Tyr: Starlight Guardian 站立动画和终极技能动画。",
+      "很抱歉这次更新延迟了，学校开学了，我只能在下午更新网站。如果你喜欢我做的东西并愿意帮忙，可以在我的 ko-fi 页面支持我 :)"
+    ]
+  },
+  {
+    "date": "11/09/2025",
+    "changes": [
+      "新增 Sonya: Shadowed Dream 角色头像。",
+      "新增 Sonya: Shadowed Dream 站立动画。",
+      "新增 Sonya: Shadowed Dream 和 Rafina: Code Name A 终极技能动画。"
+    ]
+  },
+  {
+    "date": "04/09/2025",
+    "changes": [
+      "新增「Slap Slap Pop」小游戏动画。"
+    ]
+  },
+  {
+    "date": "28/08/2025",
+    "changes": [
+      "新增 Rubia: Maid Bikini 角色头像。",
+      "新增 Rubia: Maid Bikini 终极技能动画。"
+    ]
+  },
+  {
+    "date": "16/08/2025",
+    "changes": [
+      "修复更新日志弹窗中的滚动条样式。",
+      "新增逐帧导出动画的选项。",
+      "允许更小的屏幕尺寸导出动画。"
+    ]
+  },
+  {
+    "date": "14/08/2025",
+    "changes": [
+      "新增 ko-fi 页面用于接收捐助。",
+      "新增手机端菜单。",
+      "新增新的角色头像。",
+      "新增 Rubia: Maid Bikini、Sylvia: Bikini Agent 和 Teresse: Milky Bikini 站立动画。",
+      "新增 Sylvia: Bikini Agent 和 Teresse: Milky Bikini 终极技能动画。",
+      "新增 Sylvia: Bikini Agent 和 Teresse: Milky Bikini 宿命之客动画。"
+    ]
+  },
+  {
+    "date": "06/08/2025",
+    "changes": [
+      "调整视口断点，让平板和小型笔记本上的体验更好。"
+    ]
+  },
+  {
+    "date": "04/08/2025",
+    "changes": [
+      "在自定义 Spine 模型上传中新增对 json 骨骼文件的支持。"
+    ]
+  },
+  {
+    "date": "01/08/2025",
+    "changes": [
+      "新增自定义 Spine 模型上传功能（导航栏中的 + 图标）。"
+    ]
+  },
+  {
+    "date": "31/07/2025",
+    "changes": [
+      "将「Kelian: Apostle」重命名为「Olivier: Apostle (Kelian)」。",
+      "新增 Olivier: Apostle (Kelian) 的头像和终极技能动画。",
+      "新增一个图标用于切换宿命之客动画的背景（Justia 的 Prestige 皮肤除外，因为效果太糟糕了）。"
+    ]
+  },
+  {
+    "date": "17/07/2025",
+    "changes": [
+      "新增更新日志弹窗。",
+      "为游戏中还没有头像的角色新增默认头像。",
+      "新增 Olivier: White Witch、Kelian: Apostle、Olivier: Fallen Wings 和 Blade: Onsen Swordfighter 站立动画。",
+      "新增 Olivier: Fallen Wings 终极技能动画。"
+    ]
+  }
+]

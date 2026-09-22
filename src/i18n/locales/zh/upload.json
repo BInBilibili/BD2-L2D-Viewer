@@ -1,0 +1,27 @@
+{
+  "spine": {
+    "title": "上传 Spine 文件",
+    "descriptionStart": "选择你的 ",
+    "descriptionSeparator": "、",
+    "descriptionOr": " 或 ",
+    "descriptionAnd": " 以及相关的 ",
+    "descriptionEnd": " 文件。仅支持 Spine 4.1 文件。",
+    "namePlaceholder": "角色名称",
+    "dropHint": "拖拽到此处，或 ",
+    "chooseFiles": "选择文件",
+    "submit": "上传",
+    "errorNoName": "请输入名称。",
+    "errorMissingFiles": "缺少 atlas 或骨架文件。",
+    "errorMissingImages": "缺少图片：{names}",
+    "errorUnexpected": "发生意外错误：{message}",
+    "errorReadAtlas": "读取 atlas 失败。",
+    "success": "上传成功。"
+  },
+  "background": {
+    "title": "自定义背景",
+    "description": "你可以上传自己的背景图，放在角色后方。图片可像内置编辑器一样拖拽和缩放。推荐格式：PNG 或 JPG。",
+    "selectImage": "点击选择图片",
+    "maxSizeHint": "最大文件大小取决于你的浏览器",
+    "reset": "重置背景"
+  }
+}

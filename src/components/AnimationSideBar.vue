@@ -8,27 +8,27 @@
             :class="sidebarTab === 'controls' ? 'bg-gray-600 text-white' : 'text-gray-300 hover:text-white'"
             @click="sidebarTab = 'controls'"
           >
-            Controls
+            {{ t('sidebar.controls') }}
           </button>
           <button
             class="px-3 py-1 rounded text-sm transition-colors"
             :class="sidebarTab === 'layers' ? 'bg-gray-600 text-white' : 'text-gray-300 hover:text-white'"
             @click="sidebarTab = 'layers'"
           >
-            Layers
+            {{ t('sidebar.layers') }}
           </button>
         </div>
       </div>
       <template v-if="sidebarTab === 'controls'">
         <div class="hidden lg:flex flex-col gap-2 min-h-0">
-          <span>Skins</span>
+          <span>{{ t('sidebar.skins') }}</span>
           <select
             v-model="store.selectedSkin"
             class="bg-gray-700 text-white"
           >
             <option v-for="skin in skins" :key="skin" :value="skin">{{ skin }}</option>
           </select>
-          <span>Animations</span>
+          <span>{{ t('sidebar.animations') }}</span>
           <div class="overflow-y-auto sidebar-scroll flex-1">
             <div
               v-for="name in animations"
@@ -43,16 +43,16 @@
         </div>
       </template>
       <template v-else>
-        <span>Layers</span>
+        <span>{{ t('sidebar.layers') }}</span>
         <input
           v-model="layerFilter"
           type="text"
-          placeholder="Filter layers..."
+          :placeholder="t('sidebar.filterLayersPlaceholder')"
           class="bg-gray-700 text-white rounded px-2 py-1 text-sm"
         />
         <div class="overflow-y-auto sidebar-scroll flex-1 min-h-0">
           <div v-if="!filteredLayers.length" class="text-sm text-gray-400 px-2 py-2">
-            No layers found.
+            {{ t('sidebar.noLayersFound') }}
           </div>
           <label
             v-for="layer in filteredLayers"
@@ -71,15 +71,15 @@
     </div>
     <div class="lg:mt-auto flex flex-col">
       <div v-if="!currentChar?.customFiles" class="p-2">
-        <span>Animation Category</span>
+        <span>{{ t('sidebar.animationCategory') }}</span>
         <select v-model="store.animationCategory" class="bg-gray-700 text-white w-full">
-          <option value="character">Character</option>
-          <option value="ultimate" :disabled="!currentChar?.cutscene">Ultimate</option>
-          <option value="dating" :disabled="!currentChar?.dating">Fated Guest</option>
+          <option value="character">{{ t('sidebar.character') }}</option>
+          <option value="ultimate" :disabled="!currentChar?.cutscene">{{ t('sidebar.ultimate') }}</option>
+          <option value="dating" :disabled="!currentChar?.dating">{{ t('sidebar.fatedGuest') }}</option>
         </select>
       </div>
       <div class="p-2">
-        <span>Animation Speed</span>
+        <span>{{ t('sidebar.animationSpeed') }}</span>
         <div class="flex items-center gap-2">
           <input
             type="range"
@@ -97,7 +97,7 @@
           class="bg-gray-600 hover:bg-gray-500 text-white rounded shadow transition px-4 py-2"
           @click="emit('reset-camera')"
         >
-          Reset View
+          {{ t('sidebar.resetView') }}
         </button>
         <button
           class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded shadow transition px-4 py-2"
@@ -111,7 +111,7 @@
           class="flex-1 bg-gray-600 hover:bg-gray-500 text-white rounded shadow transition px-4 py-2"
           @click="colorInput?.click()"
         >
-          BG Color
+          {{ t('sidebar.bgColor') }}
         </button>
         <input
           ref="colorInput"
@@ -127,11 +127,11 @@
           :disabled="screenshotting"
         >
           <LoadingIcon v-if="screenshotting" />
-          <span v-else>Screenshot</span>
+          <span v-else>{{ t('sidebar.screenshot') }}</span>
         </button>
         <label class="flex items-center gap-1 text-sm whitespace-nowrap">
           <input type="checkbox" v-model="transparentBg" />
-          <span>Transparent<br />image/export</span>
+          <span>{{ t('sidebar.transparent') }}<br />{{ t('sidebar.imageExport') }}</span>
         </label>
       </div>
       <div class="p-2 hidden md:flex relative" ref="desktopExportRef">
@@ -141,7 +141,7 @@
           :disabled="exporting"
         >
           <LoadingIcon v-if="exporting" />
-          <span v-else>Export Animation</span>
+          <span v-else>{{ t('sidebar.exportAnimation') }}</span>
         </button>
         <div
           v-if="showExportMenu"
@@ -151,13 +151,13 @@
             class="block w-full text-left px-4 py-2 hover:bg-gray-600"
             @click="onExport('video')"
           >
-            Export as WebM
+            {{ t('sidebar.exportAsWebm') }}
           </button>
           <button
             class="block w-full text-left px-4 py-2 hover:bg-gray-600"
             @click="onExport('frames')"
           >
-            Export as Frames (ZIP)
+            {{ t('sidebar.exportAsFrames') }}
           </button>
         </div>
       </div>
@@ -168,7 +168,7 @@
           :disabled="exporting"
         >
           <LoadingIcon v-if="exporting" />
-          <span v-else>Export Animation</span>
+          <span v-else>{{ t('sidebar.exportAnimation') }}</span>
         </button>
         <div
           v-if="showExportMenu"
@@ -178,20 +178,20 @@
             class="block w-full text-left px-4 py-2 hover:bg-gray-600"
             @click="onExport('video')"
           >
-            Export as WebM
+            {{ t('sidebar.exportAsWebm') }}
           </button>
           <button
             class="block w-full text-left px-4 py-2 hover:bg-gray-600"
             @click="onExport('frames')"
           >
-            Export as Frames (ZIP)
+            {{ t('sidebar.exportAsFrames') }}
           </button>
         </div>
       </div>
       <div class="p-2">
         <label class="flex items-center gap-1 text-sm whitespace-nowrap">
           <input type="checkbox" v-model="store.useCurrentCamera" />
-          <span>Use current camera in image/export</span>
+          <span>{{ t('sidebar.useCurrentCamera') }}</span>
         </label>
       </div>
     </div>
@@ -201,6 +201,7 @@
 <script setup lang="ts">
 import { computed, toRefs, ref, watch, onMounted, onUnmounted } from 'vue'
 import { useCharacterStore } from '@/stores/characterStore'
+import { t } from '@/i18n'
 
 import LoadingIcon from '@/components/icons/LoadingIcon.vue';
 
@@ -245,7 +246,7 @@ function handleClickOutside(e: MouseEvent) {
 }
 
 const selectedAnimation = computed(() => store.selectedAnimation)
-const toggleLabel = computed(() => (store.playing ? 'Pause' : 'Play'))
+const toggleLabel = computed(() => t(store.playing ? 'sidebar.pause' : 'sidebar.play'))
 const currentChar = computed(() => store.characters.find(c => c.id === store.selectedCharacterId))
 const layerSourceSeparator = ' > '
 const layerNames = computed(() => [...store.layerNames].sort((a, b) => a.localeCompare(b)))
@@ -268,7 +269,9 @@ const layerItems = computed(() => {
     seenDuplicates.set(baseName, seen + 1)
     return {
       key: name,
-      label: seen === 0 ? baseName : `${baseName} (${seen === 1 ? 'extra' : `extra ${seen}`})`,
+      label: seen === 0
+        ? baseName
+        : `${baseName} (${seen === 1 ? t('sidebar.extra') : t('sidebar.extraIndexed', { index: seen })})`,
     }
   })
 })

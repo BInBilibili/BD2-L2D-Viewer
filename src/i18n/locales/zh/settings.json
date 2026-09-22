@@ -1,0 +1,12 @@
+{
+  "title": "设置",
+  "closeAria": "关闭设置",
+  "audioLanguageLegend": "语音语言",
+  "audioLanguageHint": "选择角色动画播放时所使用的语音语言。",
+  "japanese": "日语",
+  "korean": "韩语",
+  "uiLanguageLegend": "界面语言",
+  "uiLanguageHint": "选择本站界面所使用的语言。",
+  "chineseName": "简体中文",
+  "englishName": "英语"
+}

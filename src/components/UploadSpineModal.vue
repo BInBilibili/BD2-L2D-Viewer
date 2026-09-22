@@ -5,15 +5,12 @@
   >
     <div class="relative bg-gray-900 p-4 rounded w-full max-w-lg">
       <button class="absolute top-2 right-3 cursor-pointer" @click="$emit('close')">✕</button>
-      <h2 class="text-lg font-bold mb-2">Upload Spine Files</h2>
-      <p class="mb-2">
-        Select your <strong>.atlas</strong>, <strong>.skel</strong> or <strong>.json</strong> and related <strong>.png</strong> files.
-        Only Spine 4.1 files are supported.
-      </p>
+      <h2 class="text-lg font-bold mb-2">{{ t('upload.spine.title') }}</h2>
+      <p class="mb-2">{{ t('upload.spine.descriptionStart') }}<strong>.atlas</strong>{{ t('upload.spine.descriptionSeparator') }}<strong>.skel</strong>{{ t('upload.spine.descriptionOr') }}<strong>.json</strong>{{ t('upload.spine.descriptionAnd') }}<strong>.png</strong>{{ t('upload.spine.descriptionEnd') }}</p>
       <input
         v-model="name"
         type="text"
-        placeholder="Character name"
+        :placeholder="t('upload.spine.namePlaceholder')"
         class="bg-gray-700 text-white p-2 w-full mb-2 outline-none"
       />
       <div
@@ -30,8 +27,7 @@
           @change="onFiles"
         />
         <p class="mb-2">
-          Drag files here or
-          <span class="text-blue-400 underline cursor-pointer" @click="fileInput?.click()">choose files</span>
+          {{ t('upload.spine.dropHint') }}<span class="text-blue-400 underline cursor-pointer" @click="fileInput?.click()">{{ t('upload.spine.chooseFiles') }}</span>
         </p>
         <div v-if="fileNames.length" class="text-sm break-words">{{ fileNames.join(', ') }}</div>
       </div>
@@ -43,7 +39,7 @@
           :disabled="loading"
         >
           <LoadingIcon v-if="loading" />
-          <span v-else>Upload</span>
+          <span v-else>{{ t('upload.spine.submit') }}</span>
         </button>
       </div>
     </div>
@@ -53,6 +49,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useCharacterStore } from '@/stores/characterStore'
+import { t } from '@/i18n'
 
 import LoadingIcon from '@/components/icons/LoadingIcon.vue'
 
@@ -61,12 +58,20 @@ const store = useCharacterStore()
 const fileInput = ref<HTMLInputElement | null>(null)
 const files = ref<File[]>([])
 const name = ref('')
-const message = ref('')
+const messageKey = ref('')
+const messageParams = ref<Record<string, string | number>>({})
 const success = ref(false)
 const loading = ref(false)
 
 const fileNames = computed(() => files.value.map(f => f.name))
 const msgClass = computed(() => (success.value ? 'text-green-400' : 'text-red-400'))
+// Translated inside a computed so a language switch re-renders the visible message.
+const message = computed(() => (messageKey.value ? t(messageKey.value, messageParams.value) : ''))
+
+function setMessage(key: string, params: Record<string, string | number> = {}) {
+  messageKey.value = key
+  messageParams.value = params
+}
 
 function onFiles(e: Event) {
   files.value = Array.from((e.target as HTMLInputElement).files || [])
@@ -77,10 +82,10 @@ function onDrop(e: DragEvent) {
 }
 
 function process() {
-  message.value = ''
+  setMessage('')
   success.value = false
   if (!name.value.trim()) {
-    message.value = 'Enter a name.'
+    setMessage('upload.spine.errorNoName')
     return
   }
   const atlas = files.value.find(f => f.name.toLowerCase().endsWith('.atlas'))
@@ -88,7 +93,7 @@ function process() {
   const skel = files.value.find(f => f.name.toLowerCase().endsWith('.skel'))
   const textures = files.value.filter(f => f.name.toLowerCase().endsWith('.png'))
   if (!atlas || (!skel && !json)) {
-    message.value = 'Atlas and/or skeleton files are missing.'
+    setMessage('upload.spine.errorMissingFiles')
     return
   }
   loading.value = true
@@ -98,9 +103,9 @@ function process() {
       const atlasText = String(reader.result)
       const regex = /([^\s]+\.png)/g
       const referenced = Array.from(atlasText.matchAll(regex)).map(m => m[1])
-      const missing = referenced.filter(n => !textures.some(t => t.name === n))
+      const missing = referenced.filter(n => !textures.some(tex => tex.name === n))
       if (missing.length > 0) {
-        message.value = `Missing images: ${missing.join(', ')}`
+        setMessage('upload.spine.errorMissingImages', { names: missing.join(', ') })
         loading.value = false
         return
       }
@@ -108,7 +113,7 @@ function process() {
       const jsonUrl = json ? URL.createObjectURL(json) : undefined
       const atlasUrl = URL.createObjectURL(atlas)
       const base = atlasUrl.slice(0, atlasUrl.lastIndexOf('/') + 1)
-      const images = Object.fromEntries(textures.map(t => [base + t.name, URL.createObjectURL(t)]))
+      const images = Object.fromEntries(textures.map(tex => [base + tex.name, URL.createObjectURL(tex)]))
       const customFiles = {
         skel: skelUrl,
         json: jsonUrl,
@@ -129,15 +134,15 @@ function process() {
       store.characters.unshift(char)
       store.selectedCharacterId = char.id
       success.value = true
-      message.value = 'Upload successfull.'
+      setMessage('upload.spine.success')
       loading.value = false
     } catch (err) {
-      message.value = `Unexpected error: ${(err as Error).message}`
+      setMessage('upload.spine.errorUnexpected', { message: (err as Error).message })
       loading.value = false
     }
   }
   reader.onerror = () => {
-    message.value = 'Failed to read atlas.'
+    setMessage('upload.spine.errorReadAtlas')
     loading.value = false
   }
   reader.readAsText(atlas)

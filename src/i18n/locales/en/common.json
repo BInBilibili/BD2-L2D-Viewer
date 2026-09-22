@@ -1,0 +1,13 @@
+{
+  "close": "Close",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "reset": "Reset",
+  "apply": "Apply",
+  "none": "None",
+  "loading": "Loading...",
+  "language": "Language",
+  "interfaceLanguage": "Interface language",
+  "chinese": "简体中文",
+  "english": "English"
+}

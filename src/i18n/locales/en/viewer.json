@@ -1,0 +1,10 @@
+{
+  "inspectAnimation": "Inspect animation",
+  "zoomOut": "Zoom out",
+  "zoomIn": "Zoom in",
+  "background": "Background",
+  "selectedLayer": {
+    "label": "Selected Layer:",
+    "value": "{name}"
+  }
+}

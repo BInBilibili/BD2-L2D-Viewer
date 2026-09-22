@@ -4,14 +4,14 @@
       <input
         v-model="filter"
         type="text"
-        placeholder="Search..."
+        :placeholder="t('sidebar.searchPlaceholder')"
         class="bg-gray-700 text-white p-2 outline-none flex-1 min-w-0"
       />
       <button
         type="button"
         class="relative w-10 h-10 flex items-center justify-center rounded bg-gray-700 hover:bg-gray-600 transition-colors"
         :class="hasActiveFilters ? 'text-indigo-300' : 'text-white'"
-        aria-label="Filter characters"
+        :aria-label="t('sidebar.filterCharacters')"
         @click="filterModalOpen = true"
       >
         <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -37,17 +37,17 @@
           v-if="char.displayMode"
           class="pointer-events-none absolute -left-7 top-2.5 z-10 w-24 -rotate-45 py-0.5 text-center text-[10px] font-black tracking-wider text-white shadow-md shadow-black/40"
           :class="char.displayMode === 'updated' ? 'bg-amber-500' : 'bg-emerald-500'"
-          :aria-label="char.displayMode === 'updated' ? 'Updated character' : 'New character'"
+          :aria-label="char.displayMode === 'updated' ? t('sidebar.updatedCharacter') : t('sidebar.newCharacter')"
         >
-          {{ char.displayMode === 'updated' ? 'UPDATED' : 'NEW' }}
+          {{ char.displayMode === 'updated' ? t('sidebar.updatedBadge') : t('sidebar.newBadge') }}
         </span>
         <img
           :src="icons[char.icon] || icons['unknown']"
-          :alt="char.costumeName"
+          :alt="localizeCostumeName(char.costumeName)"
           class="w-16 h-16 object-cover rounded-[50%]"
         />
         <div class="flex-grow pl-2">
-          <span class="text-lg">{{ char.charName + ': ' + char.costumeName }}</span>
+          <span class="text-lg">{{ localizeCharacterName(char.charName) + ': ' + localizeCostumeName(char.costumeName) }}</span>
         </div>
         <div class="flex flex-shrink-0 gap-1 pl-2 pr-2">
           <div
@@ -65,7 +65,7 @@
         </div>
       </div>
       <div v-if="!filteredCharacters.length" class="text-sm text-gray-400 px-2 py-3">
-        No characters found.
+        {{ t('sidebar.noCharactersFound') }}
       </div>
     </div>
     <div
@@ -75,11 +75,11 @@
     >
       <div class="w-full max-w-sm rounded bg-gray-800 border border-gray-700 shadow-xl p-4">
         <div class="flex items-center justify-between gap-3 mb-4">
-          <h2 class="text-lg font-semibold">Filters</h2>
+          <h2 class="text-lg font-semibold">{{ t('sidebar.filters') }}</h2>
           <button
             type="button"
             class="w-8 h-8 flex items-center justify-center rounded hover:bg-gray-700 transition-colors"
-            aria-label="Close filters"
+            :aria-label="t('sidebar.closeFilters')"
             @click="filterModalOpen = false"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -97,7 +97,7 @@
             :aria-pressed="showFatedGuestOnly"
             @click="showFatedGuestOnly = !showFatedGuestOnly"
           >
-            <span class="text-sm text-gray-100">Fated Guest animations</span>
+            <span class="text-sm text-gray-100">{{ t('sidebar.fatedGuestAnimations') }}</span>
             <span class="h-6 px-2 bg-blue-500 text-white flex items-center justify-center text-xs font-bold rounded">FG</span>
           </button>
 
@@ -108,7 +108,7 @@
             :aria-pressed="showUltimateOnly"
             @click="showUltimateOnly = !showUltimateOnly"
           >
-            <span class="text-sm text-gray-100">Ultimate animations</span>
+            <span class="text-sm text-gray-100">{{ t('sidebar.ultimateAnimations') }}</span>
             <span class="h-6 px-2 bg-purple-500 text-white flex items-center justify-center text-xs font-bold rounded">U</span>
           </button>
 
@@ -119,7 +119,7 @@
             :aria-pressed="characterTypeFilter === 'playable'"
             @click="characterTypeFilter = characterTypeFilter === 'playable' ? 'all' : 'playable'"
           >
-            <span class="text-sm text-gray-100">Playable characters</span>
+            <span class="text-sm text-gray-100">{{ t('sidebar.playableCharacters') }}</span>
             <span class="h-6 px-2 bg-emerald-500 text-white flex items-center justify-center text-xs font-bold rounded">PC</span>
           </button>
 
@@ -130,7 +130,7 @@
             :aria-pressed="characterTypeFilter === 'npc'"
             @click="characterTypeFilter = characterTypeFilter === 'npc' ? 'all' : 'npc'"
           >
-            <span class="text-sm text-gray-100">NPCs</span>
+            <span class="text-sm text-gray-100">{{ t('sidebar.npcs') }}</span>
             <span class="h-6 px-2 bg-amber-500 text-white flex items-center justify-center text-xs font-bold rounded">NPC</span>
           </button>
         </div>
@@ -142,7 +142,7 @@
             :disabled="!hasActiveFilters"
             @click="resetFilters"
           >
-            Reset filters
+            {{ t('sidebar.resetFilters') }}
           </button>
         </div>
       </div>
@@ -154,6 +154,12 @@
 import icons from '@/utils/charIcons';
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useCharacterStore } from '@/stores/characterStore'
+import { t } from '@/i18n'
+import {
+  localizeCharacterName,
+  localizeCostumeName,
+  nameSearchText,
+} from '@/utils/nameTranslations'
 
 const emit = defineEmits(['select'])
 const store = useCharacterStore()
@@ -172,7 +178,7 @@ const filteredCharacters = computed(() =>
     .map((character, index) => ({ character, index }))
     .filter(({ character: c }) => {
       const query = filter.value.trim().toLowerCase()
-      const matchesSearch = !query || (c.charName + ' ' + c.costumeName).toLowerCase().includes(query)
+      const matchesSearch = !query || nameSearchText(c.charName, c.costumeName).includes(query)
       const matchesFatedGuest = !showFatedGuestOnly.value || !!c.dating
       const matchesUltimate = !showUltimateOnly.value || !!c.cutscene
       const isNpc = c.charName.includes('(Npc)')
