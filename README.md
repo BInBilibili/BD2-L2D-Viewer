@@ -31,6 +31,14 @@ pnpm lint         # 代码检查
 
 推送到 `zh-cn` 分支后，GitHub Actions（`.github/workflows/gh-pages.yml`）会自动构建并发布到 GitHub Pages。
 
+如果推送后没有自动触发（fork 仓库偶尔会这样），手动触发一次即可：
+
+```sh
+gh workflow run gh-pages.yml --repo BInBilibili/BD2-L2D-Viewer --ref zh-cn
+```
+
+> 注意：`zh-cn` 分支必须已加入仓库 `github-pages` 环境的「部署分支」白名单，否则 deploy 步骤会被环境保护规则拦截。
+
 ## 许可证
 
 本项目沿用上游的 MIT 许可证。为保持法律文本原意，以下许可证正文保留英文原文：
