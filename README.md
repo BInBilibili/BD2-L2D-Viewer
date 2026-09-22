@@ -4,7 +4,7 @@
 
 本项目是 [Jelosus2/BD2-L2D-Viewer](https://github.com/Jelosus2/BD2-L2D-Viewer) 的简体中文汉化版。
 
-**在线地址：<https://binbilibili.github.io/BD2-L2D-Viewer/>**
+**在线地址：<https://binbilibili.github.io/BD2-L2D-Viewer-cn/>**
 
 ## 中文版改动
 
@@ -34,7 +34,7 @@ pnpm lint         # 代码检查
 如果推送后没有自动触发（fork 仓库偶尔会这样），手动触发一次即可：
 
 ```sh
-gh workflow run gh-pages.yml --repo BInBilibili/BD2-L2D-Viewer --ref zh-cn
+gh workflow run gh-pages.yml --repo BInBilibili/BD2-L2D-Viewer-cn --ref zh-cn
 ```
 
 > 注意：`zh-cn` 分支必须已加入仓库 `github-pages` 环境的「部署分支」白名单，否则 deploy 步骤会被环境保护规则拦截。
